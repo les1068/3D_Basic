@@ -123,6 +123,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12856202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8807025548996075549, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
+  m_PrefabInstance: {fileID: 8807025548992138135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &12856208
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12856202}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdd040bad7792b946ba65d506093023f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &91406516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,7 +273,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-59142
+  m_Name: pb_Mesh-1262
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -577,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057644753}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -0.035, y: 3.803, z: 1.084}
+  m_LocalPosition: {x: 0.58, y: 3.17, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -590,7 +615,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-73360
+  m_Name: pb_Mesh-1338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -754,7 +779,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-65776
+  m_Name: pb_Mesh-1326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -919,25 +944,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 12856204, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 12856204, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
+      propertyPath: rotateSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 260196669}
     - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 452
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedEdges.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedFaces.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedVertices.Array.size
-      value: 0
+      value: 461
       objectReference: {fileID: 0}
     - target: {fileID: 8807025548204292503, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_Mesh
@@ -953,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 1920003866}
     - target: {fileID: 8807025548521185263, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1264
+      value: 1273
       objectReference: {fileID: 0}
     - target: {fileID: 8807025548996075548, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_RootOrder
@@ -1009,19 +1030,7 @@ PrefabInstance:
       objectReference: {fileID: 1396403287}
     - target: {fileID: 8807025549258022658, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1267
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025549258022658, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedEdges.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025549258022658, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedFaces.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807025549258022658, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
-      propertyPath: m_SelectedVertices.Array.size
-      value: 0
+      value: 1276
       objectReference: {fileID: 0}
     - target: {fileID: 8807025549258022661, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_Mesh
