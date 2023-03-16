@@ -8,11 +8,11 @@ public class TurretStandard : Turret
     {
         base.Start();
         StartCoroutine(fireCoroutine);
+        //Time.timeScale = 0.1f;    // 1/10의 속도로 게임이 돌아감
     }
+
     protected override void OnFire()
     {
-        GameObject obj = Instantiate(bulletPrefab);
-        obj.transform.position = fireTransform.position;
-        obj.transform.rotation = fireTransform.rotation;
+        Factory.Inst.GetBullet(fireTransform);        
     }
 }
