@@ -945,7 +945,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 485
+  m_VersionIndex: 488
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3627,7 +3627,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1297
+  m_VersionIndex: 1300
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3924,7 +3924,7 @@ GameObject:
   - component: {fileID: 12856205}
   - component: {fileID: 12856204}
   - component: {fileID: 12856208}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6610,7 +6610,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1297
+  m_VersionIndex: 1300
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
