@@ -60,8 +60,9 @@ public class TurretHunter : Turret
         //to는 barrelBodyTransform.position위치에서 barrelBodyTransform.forward 방향으로 sightRange만큼 이동한 위치
 
         Ray ray = new Ray(barrelBodyTransform.position, barrelBodyTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, sightRange)  // 선이 충돌하는지 체크
-            && hitInfo.collider.gameObject.CompareTag("Player"))      // 그리고 충돌한 것이 플레이어 일 때
+
+        // 선이 충돌하는지 체크("Player","Wall" 레이어만 체크)
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, sightRange, LayerMask.GetMask("Player","Wall")))  
         {
             to = hitInfo.point;                        // 충돌했으면 도착지점은 충돌한 위치
             Gizmos.color = Color.red;                  // 충돌했으면 빨간색으로 보이기
@@ -138,7 +139,15 @@ public class TurretHunter : Turret
                 }
             }
         }
+        else
+        {
+            if (isFiring)
+            {
+                StopCoroutine(fireCoroutine);    // 연사 중지
+                isFiring = false;
 
+            }
+        }
     }
 
     bool IsVisibleTarget() // 타겟이 존재하고 볼 수 있는지 확인하는 함수
