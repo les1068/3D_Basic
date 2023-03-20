@@ -39,6 +39,9 @@ public class Test_Rotation2 : Test_Base
     private void Update()
     {
         // from회전에서 to회전으로 maxDegreeDetal만큼 회전시키기, 일정한 속도로 회전한다.
-        //objBase.rotation = Quaternion.RotateTowards(objBase.rotation, to, Time.deltaTime * 90.0f) ;
+        //objBase.rotation = Quaternion.RotateTowards(objBase.rotation, to, Time.deltaTime * 90.0f);
+
+        // from회전에서 to회전으로 점점 속도가 줄어들면서 회전한다.
+        objBase.rotation = Quaternion.Slerp(objBase.rotation, to, Time.deltaTime * 0.5f);
     }
 }

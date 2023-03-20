@@ -45,7 +45,7 @@ public class TurretHunter : Turret
             target = null;              // 트리거에서 Player가 나가면 타겟은 null로 설정
         }
     }
-    
+
     private void OnDrawGizmos()  // 씬창에서 보이는 테스트용 정보 그리는 함수
     {
         if (barrelBodyTransform == null)  // 에디터에서 플레이를 안했을 때 찾기 위해서 사용
@@ -54,22 +54,34 @@ public class TurretHunter : Turret
         }
         Gizmos.color = Color.yellow;                      // 기본 색 노란색으로 설정
         Vector3 from = barrelBodyTransform.position;      // 시작 위치 설정하기
-        Vector3 to;                                       // 도착 위치
+        Vector3 to;                                       // 총구에서 직선으로 나간 도착 위치(플레이어나 벽이랑 충돌하면 충돌지점까지)
+        bool isFire = false;
+
+        //to는 barrelBodyTransform.position위치에서 barrelBodyTransform.forward 방향으로 sightRange만큼 이동한 위치
 
         Ray ray = new Ray(barrelBodyTransform.position, barrelBodyTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, sightRange))  // 선이 충돌하는지 체크
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, sightRange)  // 선이 충돌하는지 체크
+            && hitInfo.collider.gameObject.CompareTag("Player"))      // 그리고 충돌한 것이 플레이어 일 때
         {
             to = hitInfo.point;                        // 충돌했으면 도착지점은 충돌한 위치
             Gizmos.color = Color.red;                  // 충돌했으면 빨간색으로 보이기
             Gizmos.DrawSphere(to, 0.1f);               // 충돌한 지점을 빨간원으로 강조하기
+            isFire = true;
         }
         else
         {
             to = barrelBodyTransform.position + barrelBodyTransform.forward * sightRange;  // 도착 위치 계산
-          //to는 barrelBodyTransform.position위치에서 barrelBodyTransform.forward 방향으로 sightRange만큼 이동한 위치
         }
-
         Gizmos.DrawLine(from, to);    // 최종적으로 선을 그리기
+
+        Vector3 dir1 = Quaternion.AngleAxis(-fireAngle, barrelBodyTransform.up) * barrelBodyTransform.forward;
+        Vector3 dir2 = Quaternion.AngleAxis(fireAngle, barrelBodyTransform.up) * barrelBodyTransform.forward;
+
+        Gizmos.color = isFire ? Color.red : Color.green;        // 발사 중이면 빨간색 아니면 녹색
+        to = barrelBodyTransform.position + dir1 * sightRange;
+        Gizmos.DrawLine(from, to);
+        to = barrelBodyTransform.position + dir2 * sightRange;
+        Gizmos.DrawLine(from, to);
     }
     private void LookTarget()  // 타겟이 있고 터렛이 볼수 있으면 해당 방향으로 터렛의 고개를 돌리는 함수
     {

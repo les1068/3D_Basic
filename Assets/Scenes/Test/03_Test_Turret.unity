@@ -447,9 +447,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2032554215, guid: 5af0b088db0e05f4286e02c4522bc4af, type: 3}
-      propertyPath: m_Radius
-      value: 20
+    - target: {fileID: 1216594837, guid: 5af0b088db0e05f4286e02c4522bc4af, type: 3}
+      propertyPath: fireInterval
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7949029021006686724, guid: 5af0b088db0e05f4286e02c4522bc4af, type: 3}
       propertyPath: m_RootOrder
@@ -507,7 +507,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1408
+  m_Name: pb_Mesh-112630
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -929,7 +929,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1432
+  m_Name: pb_Mesh-112654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1093,7 +1093,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1420
+  m_Name: pb_Mesh-112642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1632,7 +1632,7 @@ PrefabInstance:
       objectReference: {fileID: 1789218947}
     - target: {fileID: 8807025548204292500, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 485
+      value: 488
       objectReference: {fileID: 0}
     - target: {fileID: 8807025548204292503, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_Mesh
@@ -1648,7 +1648,7 @@ PrefabInstance:
       objectReference: {fileID: 783919783}
     - target: {fileID: 8807025548521185263, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1297
+      value: 1300
       objectReference: {fileID: 0}
     - target: {fileID: 8807025548996075548, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_RootOrder
@@ -1704,7 +1704,7 @@ PrefabInstance:
       objectReference: {fileID: 1871614768}
     - target: {fileID: 8807025549258022658, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1297
+      value: 1300
       objectReference: {fileID: 0}
     - target: {fileID: 8807025549258022661, guid: 3d584f87c9298da46993c633542ef91c, type: 3}
       propertyPath: m_Mesh
