@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 115019770184079074}
   - component: {fileID: 115019770184079075}
   - component: {fileID: 1404856005984073748}
+  - component: {fileID: 56542568}
   m_Layer: 9
   m_Name: DoorBase
   m_TagString: Untagged
@@ -75,7 +76,7 @@ Animator:
   m_GameObject: {fileID: 115019770184079068}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f129ac5bbce82fa40b38be261ea17083, type: 2}
+  m_Controller: {fileID: 22100000, guid: eedf90670323c2f418cfc3352ace1d0e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -85,6 +86,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &56542568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115019770184079068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a727e1b8d596741b22956ebbd21888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeTime: 3
 --- !u!1 &115019770326253795
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49844c164dec97245afed5ce326b286b, type: 2}
+  - {fileID: 2100000, guid: 09d7f3d7b54c7954f8f6f133ed909da8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109830848680680386, guid: 8291bb52f0bb4be49bc9530d68bef665, type: 3}
       propertyPath: m_VersionIndex
-      value: 861
+      value: 900
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8291bb52f0bb4be49bc9530d68bef665, type: 3}
