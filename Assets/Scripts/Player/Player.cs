@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
 
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        ItemUseAlarm alarm= GetComponentInChildren<ItemUseAlarm>();  // 아이템 사용 알람이 울리면 실행될 함수 등록
+        alarm.onUseableItemUsed += UseObject;
     }
     
 
@@ -73,7 +76,7 @@ public class Player : MonoBehaviour
     }
     private void OnUseInput(InputAction.CallbackContext context)
     {
-        
+        anim.SetTrigger("Use");
     }
     private void OnJumpInput(InputAction.CallbackContext context)
     {
@@ -109,5 +112,9 @@ public class Player : MonoBehaviour
     private void onGrounded()   // 착지했을 때 처리 함수
     {
         isJumping = false;      // 점프가 끝났다고 표시
+    }
+    private void UseObject(IUseableObject obj)  // 아이템 사용한다는 알람이 오면 실행되는 함수. obj : 사용할 오브젝트
+    {
+        obj.Used();  // 사용
     }
 }
