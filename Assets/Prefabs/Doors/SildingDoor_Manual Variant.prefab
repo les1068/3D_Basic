@@ -181,7 +181,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 115019770184079068, guid: 33f23d464bc8da74d8d510ed2e4e5023, type: 3}
       propertyPath: m_Name
-      value: SildingDoor_Manual
+      value: SildingDoor_Manual Variant
       objectReference: {fileID: 0}
     - target: {fileID: 115019770184079069, guid: 33f23d464bc8da74d8d510ed2e4e5023, type: 3}
       propertyPath: m_RootOrder
@@ -241,6 +241,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f23d464bc8da74d8d510ed2e4e5023, type: 3}
+--- !u!1 &2959699363941260940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115019770184079068, guid: 33f23d464bc8da74d8d510ed2e4e5023, type: 3}
+  m_PrefabInstance: {fileID: 2921243227578370128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6037770972046288779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959699363941260940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a727e1b8d596741b22956ebbd21888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeTime: 3
 --- !u!4 &2959699363941260941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 115019770184079069, guid: 33f23d464bc8da74d8d510ed2e4e5023, type: 3}

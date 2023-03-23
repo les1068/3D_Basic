@@ -20,11 +20,11 @@ public class DoorKey : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        target.Open();
-        Destroy(this.gameObject);
+        OnConsume();
     }
     private void OnValidate()
     {
+        //
         //Debug.Log("OnValidate");
         if(target != null)
         {
@@ -32,7 +32,7 @@ public class DoorKey : MonoBehaviour
             // DoorAuto이면 그래도
             // DoorAuto가 아니면 target은 null
 
-            target = target as DoorAuto; //target이 DoorAuto면 target에 저장
+            target = target as DoorAuto;
             
             //target = target.GetComponent<DoorAuto>(); // 위와 같은 기능의 코드
 
@@ -42,5 +42,11 @@ public class DoorKey : MonoBehaviour
                 target = null;
             }*/
         }
+       
+    }
+    protected virtual void OnConsume()
+    {
+        target.Open();
+        Destroy(this.gameObject);
     }
 }
