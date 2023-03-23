@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float rotateSpeed = 180.0f;       // 회전 속도
     public float jumpForce = 6.0f;           // 점프력
 
+    public Action OnDie;
+
     float moveDir = 0;        // 현재 이동 방향    // -1(뒤) ~ 1(앞)사이
     float rotateDir = 0;      // 현재 회전 방향    // -1(좌) ~ 1(우)사이
 
@@ -48,10 +50,12 @@ public class Player : MonoBehaviour
         inputActions.Player.Move.performed -= OnMoveInput;
         inputActions.Player.Disable();                       // Player 인풋 액션맵 비활성화
     }
+
     private void FixedUpdate()
     {
         Move();    // 이동 처리
         Rotate();  // 회전 처린
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -117,4 +121,25 @@ public class Player : MonoBehaviour
     {
         obj.Used();  // 사용
     }
+
+    public void Die()  // 플레이어가 사망했을 때 실행이 되는 함수
+    {
+        //Debug.Log("Die");
+        anim.SetTrigger("Die");
+
+        // 입력 막기
+        inputActions.Player.Disable();   // Player 액션맵 비활성화
+
+        // 뒤로 넘어지게 만들기
+        rigid.constraints = RigidbodyConstraints.None;   // pitch와 roll 회전이 막혀있던 것을 풀기
+        Transform head = transform.GetChild(0); 
+
+        rigid.AddForceAtPosition(-transform.forward*0.5f,head.position, ForceMode.Impulse); // 머리 위치에 플레이어의 뒷방향으로 0.5만큼의 힘을 가하기
+        rigid.AddTorque(transform.up *1.0f,ForceMode.Impulse); // 플레이어의 up벡터를 축으로 1만큼 회전력 더하기
+        Destroy(this.gameObject, 3.0f);
+        
+        // 델리게이트로 알림 보내기
+        OnDie?.Invoke();
+    }
+    
 }
