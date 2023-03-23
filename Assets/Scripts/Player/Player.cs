@@ -12,29 +12,30 @@ public class Player : MonoBehaviour
     public float lifeTimeMax = 3.0f;         // 플레이어의 최대 수명
     float lifeTime = 3.0f;                   // 플레이어의 현재수명. 수명이 0보다 작거나 같아지면 사망처리
 
-    public float LifeTime
+    public float LifeTime          // 수명용 프로퍼티. 쓰기는 private
     {
         get => lifeTime;
         private set
         {
-            lifeTime = value;
-            onLifeTimeChange?.Invoke(lifeTime/lifeTimeMax);
+            lifeTime = value;     // 수명 변경
+            onLifeTimeChange?.Invoke(lifeTime/lifeTimeMax);   // 수명변경을 알린다. (비율을 알려줌)
 
-            if (lifeTime <= 0.0f)
+            if (lifeTime <= 0.0f) // 수명이 다되면 사망
             {
                 Die();
             }
         }
     }
 
-    public Action<float> onLifeTimeChange;
+    public Action<float> onLifeTimeChange;  // 수명 변경을 알리기 위한 델리게이트(수명 남은 비율을 알려줌)
     public Action OnDie;       // onDie 델리게이트
 
     float moveDir = 0;        // 현재 이동 방향    // -1(뒤) ~ 1(앞)사이
     float rotateDir = 0;      // 현재 회전 방향    // -1(좌) ~ 1(우)사이
 
     bool isJumping = false;   // 현재 점프 여부. true면 점프 중, false면 점프 중 아님
-    bool isAlive = true;
+    bool isAlive = true;      // 생존 여부 표시
+
     Rigidbody rigid;
     Animator anim;
     PlayerInputActions inputActions;
@@ -169,7 +170,6 @@ public class Player : MonoBehaviour
             OnDie?.Invoke();
 
             isAlive = false; // 사망 표시
-
         }
     }
     
