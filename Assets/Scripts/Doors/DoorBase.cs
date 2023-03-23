@@ -12,10 +12,20 @@ public class DoorBase : MonoBehaviour
     }
     protected virtual void OnOpen()
     {
-        anim.SetBool("IsOpen", true);
+        
     }
     protected virtual void OnClose()
     {
+        
+    }
+    public void Open()
+    {
+        anim.SetBool("IsOpen", true);
+        OnOpen();
+    }
+    public void Close()
+    {
+        OnClose();
         anim.SetBool("IsOpen", false);
     }
 }

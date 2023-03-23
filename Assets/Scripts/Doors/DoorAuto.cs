@@ -6,10 +6,10 @@ public class DoorAuto : DoorBase
 {
     private void OnTriggerEnter(Collider other)
     {
-        OnOpen();
+        Open();
     }
     private void OnTriggerExit(Collider other)
     {
-        OnClose();
+        Close();
     }
 }

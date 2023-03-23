@@ -9,7 +9,7 @@ public class ItemUseAlarm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)   // 애니메이션에서 트리거를 껐다켰다 하는데 켜진 시점에서 컬라이더가 들어오면 실행
     {
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
 
         // 충돌한 컬라이더가 내가 원하는 스크립트가 있는 root가 아닐 수 있음
         Transform target = other.transform;    
