@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5.0f;           // 이동 속도
+    private float currentMoveSpeed = 5.0f;   // 현재 이동 속도
     public float rotateSpeed = 180.0f;       // 회전 속도
     public float jumpForce = 6.0f;           // 점프력
     public float lifeTimeMax = 3.0f;         // 플레이어의 최대 수명
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour
 
     public Action<float> onLifeTimeChange;  // 수명 변경을 알리기 위한 델리게이트(수명 남은 비율을 알려줌)
     public Action OnDie;       // onDie 델리게이트
-
+    public Rigidbody Rigid => rigid;  // rigid 읽기 전용 프로퍼티
+   
     float moveDir = 0;        // 현재 이동 방향    // -1(뒤) ~ 1(앞)사이
     float rotateDir = 0;      // 현재 회전 방향    // -1(좌) ~ 1(우)사이
 
@@ -63,6 +65,8 @@ public class Player : MonoBehaviour
         isAlive = true;
         //lifeTime = lifeTimeMax;  // 소문자 l = 변수 값을 변경하는것
         LifeTime = lifeTimeMax;    // 대문자 L = 프로퍼티를 실행시키는것
+
+        ResetMoveSpeed(); // 처음 속도 지정
     }
 
     private void OnDisable()
@@ -116,7 +120,7 @@ public class Player : MonoBehaviour
     void Move() // 이동 처리 함수
     {
         // moveDir 방향으로 이동 시키기 (앞 아니면 뒤)
-        rigid.MovePosition(rigid.position + Time.fixedDeltaTime * moveSpeed * moveDir * transform.forward);
+        rigid.MovePosition(rigid.position + Time.fixedDeltaTime * currentMoveSpeed * moveDir * transform.forward);
     }
     void Rotate()  // 회전처리 함수
     {/*
@@ -172,5 +176,22 @@ public class Player : MonoBehaviour
             isAlive = false; // 사망 표시
         }
     }
-    
+    public void OnJump()
+    {
+        rigid.constraints = RigidbodyConstraints.None;
+        Transform head = transform.GetChild(0);
+        rigid.AddForceAtPosition(-transform.forward * 0.5f, head.position, ForceMode.Impulse);
+    }
+    public void SetForceJumpMode()  // 점프 중이라고 강제로 설정하는 함수
+    {
+        isJumping = true;
+    }
+    public void SetHalfSpeed()     // 속도를 절반으로 줄이는 함수
+    {
+        currentMoveSpeed = moveSpeed * 0.5f;
+    }
+    public void ResetMoveSpeed()  // 속도를 원래 속도로 돌리는 함수
+    {
+        currentMoveSpeed = moveSpeed;
+    }
 }

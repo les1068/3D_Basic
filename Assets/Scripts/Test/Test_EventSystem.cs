@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Test_EventSystem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, 
-    IDragHandler, IBeginDragHandler, IEndDragHandler  // DargHandler를 사용하려면 IDragHandler가 있어야한다.
+    IDragHandler, IBeginDragHandler, IEndDragHandler  
+    // DargHandler를 사용하려면 IDragHandler가 있어야한다.
 {
     public void OnBeginDrag(PointerEventData eventData)
     {
