@@ -9,6 +9,8 @@ public class DoorManual : DoorBase, IUseableObject
     WaitForSeconds closeWait;         // 코루틴용으로 한번만 만들고 재활용
     TextMeshPro text;
 
+    public bool IsDirectUse => true;
+
     protected override void Awake()
     {
         base.Awake();

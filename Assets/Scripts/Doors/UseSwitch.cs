@@ -8,6 +8,9 @@ public class UseSwitch : MonoBehaviour, IUseableObject
     public IUseableObject usetarget; // 사용할 오브젝트가 가지고 있는 IUseableObject 인터페이스
     bool isUsed = false;             // 사용중인지 표시하는 플래그
     Animator anim;
+
+    public bool IsDirectUse => true;
+
     void Awake()
     {
         anim = GetComponent<Animator>();

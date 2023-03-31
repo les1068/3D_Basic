@@ -164,7 +164,10 @@ public class Player : MonoBehaviour
     }
     private void UseObject(IUseableObject obj)  // 아이템 사용한다는 알람이 오면 실행되는 함수. obj : 사용할 오브젝트
     {
-        obj.Used();  // 사용
+        if (obj.IsDirectUse)
+        {
+            obj.Used();  // 사용
+        }
     }
 
     public void Die()  // 플레이어가 사망했을 때 실행이 되는 함수
