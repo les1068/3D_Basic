@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,6 +39,26 @@ public class Player : MonoBehaviour
     bool isJumping = false;   // 현재 점프 여부. true면 점프 중, false면 점프 중 아님
     bool isAlive = true;      // 생존 여부 표시
 
+    public float jumpCoolTime = 5.0f;
+    public float jumpCoolTimeMax = 5.0f;
+
+    private float JumpCoolTime
+    {
+        get => jumpCoolTime;
+        set
+        {
+            jumpCoolTime = value;
+            if(jumpCoolTime <= 0)
+            {
+                jumpCoolTime = 0;
+            }
+            onJumpCoolTimeChange?.Invoke(JumpCoolTime/jumpCoolTimeMax);
+        }
+    }
+    Action<float> onJumpCoolTimeChange;
+
+    private bool IsJumpCoolEnd => jumpCoolTime <= 0; // ture면 점프 쿨 완료, false 점프 쿨타임 중
+
     Rigidbody rigid;
     Animator anim;
     PlayerInputActions inputActions;
@@ -65,6 +86,7 @@ public class Player : MonoBehaviour
         isAlive = true;
         //lifeTime = lifeTimeMax;  // 소문자 l = 변수 값을 변경하는것
         LifeTime = lifeTimeMax;    // 대문자 L = 프로퍼티를 실행시키는것
+        jumpCoolTime = 0.0f;
 
         ResetMoveSpeed(); // 처음 속도 지정
     }
@@ -77,9 +99,19 @@ public class Player : MonoBehaviour
         inputActions.Player.Move.performed -= OnMoveInput;
         inputActions.Player.Disable();                       // Player 인풋 액션맵 비활성화
     }
+    private void Start()
+    {
+        VirtualStick stick = FindObjectOfType<VirtualStick>();
+        stick.onMoveInput += (input) => SetInput(input, input != Vector2.zero);
+
+        VirtualButton button = FindObjectOfType<VirtualButton>();
+        button.onClick += Jump;
+        onJumpCoolTimeChange += button.RefreshCoolTime;
+    }
     private void Update()
     {
         LifeTime -= Time.deltaTime;
+        JumpCoolTime -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -121,15 +153,18 @@ public class Player : MonoBehaviour
     private void OnMoveInput(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();  // 현재 키보드 입력 상황 받기
-        rotateDir = input.x;   // 좌우(좌: -1, 우 : +1)
-        moveDir = input.y;   // 앞뒤(앞: +1, 뒤 : -1)
-
 
         // context.performed : 액션에 연결된 키 중 하나라도 입력 중이면 true, 아니면 false
         // context.canceled : 액션에 연결된 키가 모두 입력 중이지 않으면 ture, 아니면 false
+        SetInput(input, !context.canceled);
+    }
 
+    private void SetInput(Vector2 input, bool isMove)
+    {
+        rotateDir = input.x;   // 좌우(좌: -1, 우 : +1)
+        moveDir = input.y;   // 앞뒤(앞: +1, 뒤 : -1)
 
-        anim.SetBool("IsMove", !context.canceled);   // 애니메이션 파라메터 변경(Idel, Move중 선택)
+        anim.SetBool("IsMove", isMove);   // 애니메이션 파라메터 변경(Idel, Move중 선택)
     }
     private void OnUseInput(InputAction.CallbackContext context)
     {
@@ -160,8 +195,9 @@ public class Player : MonoBehaviour
 
     void Jump() // 점프 처리 함수
     {
-        if (!isJumping)  // 점프 중이 아닐때만
+        if (!isJumping && IsJumpCoolEnd)  // 점프 중이 아니고 쿨타임이 다 되었을 때만 가능
         {
+            JumpCoolTime = jumpCoolTimeMax;
             rigid.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);  // 월드의 Up방향으로 힘을 즉시 가하기
             isJumping = true;  // 점프중이라고 표시
         }
