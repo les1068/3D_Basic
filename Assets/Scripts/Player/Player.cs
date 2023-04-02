@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -102,11 +103,16 @@ public class Player : MonoBehaviour
     private void Start()
     {
         VirtualStick stick = FindObjectOfType<VirtualStick>();
-        stick.onMoveInput += (input) => SetInput(input, input != Vector2.zero);
-
+        if (stick != null)
+        {
+            stick.onMoveInput += (input) => SetInput(input, input != Vector2.zero); // 가상 스틱의 입력이 있으면 이동 처리
+        }
         VirtualButton button = FindObjectOfType<VirtualButton>();
-        button.onClick += Jump;
-        onJumpCoolTimeChange += button.RefreshCoolTime;
+        if (button != null)
+        {
+            button.onClick += Jump;                             // 가상 버튼이 눌려지면 점프
+            onJumpCoolTimeChange += button.RefreshCoolTime;     // 점프 쿨타임이 변하면 버튼의 쿨타임 표시 변경
+        }
     }
     private void Update()
     {
